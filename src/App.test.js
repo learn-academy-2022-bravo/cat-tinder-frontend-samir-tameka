@@ -21,8 +21,8 @@ describe("When App renders", ()=>{
   })
   
   it("displays a Header and  Footer", () => {
-      const renderedHeader = renderedApp.find("Header")
-      const renderedFooter = renderedApp.find("Footer")
+    const renderedHeader = renderedApp.find("Header")
+    const renderedFooter = renderedApp.find("Footer")
   expect(renderedHeader.length).toEqual(1)
   expect(renderedFooter.length).toEqual(1)
   })
@@ -30,7 +30,7 @@ describe("When App renders", ()=>{
   it("provides a route of '/' to the home component", ()=>{
     const renderedHomeRoute = renderedApp.find("[path='/']")
     console.log("debug of renderedHomeRoute", renderedHomeRoute.debug())
-    expect(renderedHomeRoute.length).toEqual(1)
+  expect(renderedHomeRoute.length).toEqual(1)
   })
   
 })
