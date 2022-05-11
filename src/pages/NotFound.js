@@ -5,12 +5,11 @@ class NotFound extends Component {
     render() {
         return (
             <>
-            <div class="container">
-            <div class="justify-content-center">
-                <img src={image}  width="100vw" height="100vh"/>
-            </div>
-            </div>
-
+                <div class="container">
+                    <div class="justify-content-center">
+                        <img src={image}  width="100vw" height="100vh"/>
+                    </div>
+                </div>
             </>
         );
     }
