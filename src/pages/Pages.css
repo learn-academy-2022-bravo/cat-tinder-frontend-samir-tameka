@@ -1,0 +1,9 @@
+
+/* Home page styling */
+
+figcaption {
+    position: absolute;
+    bottom: 17rem;
+    margin: 2rem;
+    color: aliceblue;
+}
