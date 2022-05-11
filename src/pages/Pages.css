@@ -2,7 +2,7 @@
 /* Home page styling */
 
 figcaption {
-    position: absolute;
+    position: relative;
     bottom: 17rem;
     margin: 2rem;
     color: aliceblue;
