@@ -14,7 +14,7 @@ describe("When the Footer renders", () => {
 
   it("has copyright symbol", () => {
     const renderedCopyright = renderedFooter.find("span").text()
-  expect(renderedCopyright).toEqual("© 2022 BadAssDuo, Inc")
+    expect(renderedCopyright).toEqual("© 2022 BadAssDuo, Inc")
   })
-  
+
 })

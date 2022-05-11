@@ -14,7 +14,7 @@ describe("When NotFound renders", () => {
 
   it("displays an image", () => {
     const notFoundHeader = notFound.find("h1").text()
-  expect(notFoundHeader).toEqual("OH NO! YOU FOUND THE DOG POUND. TURN BACK BEFORE IT'S TOO LATE")
+    expect(notFoundHeader).toEqual("OH NO! YOU FOUND THE DOG POUND. TURN BACK BEFORE IT'S TOO LATE")
   })
-  
+
 })

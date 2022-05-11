@@ -14,7 +14,7 @@ describe("When the Header renders", () => {
 
   it("shows 5 listItems", () => {
     const renderedListItems = renderedHeader.find("li")
-  expect(renderedListItems.length).toEqual(5)
+    expect(renderedListItems.length).toEqual(5)
   })
-  
+
 })
