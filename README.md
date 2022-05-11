@@ -13,3 +13,20 @@
 - As a user, I can click on a cat name and be taken to a page that shows me all the information about that cat.
 
 - As a developer, I have test coverage on my show component.
+
+    * Attempt to test presence of a card on the show page
+        
+        it("has a card", () => {
+            const catShow = shallow(<CatShow />)
+            const catShowCard = catShow.find("Card")
+            expect(catShowCard).toEqual(1)
+        })
+
+    * Error
+
+        ● When CatShow renders › has a card
+        expect(received).toEqual(expected) // deep equality
+
+        Expected: 1
+        Received: {}
+
