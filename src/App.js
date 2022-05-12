@@ -17,7 +17,7 @@ import {
 } from 'react-router-dom'
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       cats: mockCats
@@ -25,38 +25,56 @@ class App extends Component {
   }
 
 
+
+
+
+
+  editCat = (editCat, id) => {
+    console.log("cat:", editCat)
+    console.log("id:", id)
+  }
+
   render() {
     return (
-    
-    <Router>
 
-      <Header />
+      <Router>
 
-      <Switch>
-        <Route exact path="/" component={Home} />
+        <Header />
 
-        <Route 
-          path="/catindex" 
-          render={(props) => <CatIndex cats={this.state.cats}/>} 
-        />
+        <Switch>
+          <Route exact path="/" component={Home} />
 
-        <Route 
-          path="/catshow/:id" 
-          render={(props) => {
-            let id = +props.match.params.id
-            let cat = this.state.cats.find(catObject => catObject.id === id)
-            return <CatShow cat = {cat} />
-          }} 
-        />
+          <Route
+            path="/catindex"
+            render={(props) => <CatIndex cats={this.state.cats} />}
+          />
 
-        <Route path="/catnew" component={CatNew} />
-        <Route path="/catedit" component={CatEdit} />
-        <Route component={NotFound}/>
-      </Switch>
+          <Route
+            path="/catshow/:id"
+            render={(props) => {
+              let id = +props.match.params.id
+              let cat = this.state.cats.find(catObject => catObject.id === id)
+              return <CatShow cat={cat} />
+            }}
+          />
 
-      <Footer />
-      
-    </Router>
+          <Route path="/catnew" component={CatNew} />
+
+          <Route
+            path="/catedit/:id"
+            render={(props) => {
+              let id = +props.match.params.id
+              let cat = this.state.cats.find(catObject => catObject.id === id)
+              return <CatEdit editCat={this.editCat} cat={cat} />
+            }}
+          />
+
+          <Route component={NotFound} />
+        </Switch>
+
+        <Footer />
+
+      </Router>
 
     );
   }
