@@ -30,3 +30,56 @@
         Expected: 1
         Received: {}
 
+
+
+# Fetch for Read Functionality
+
+- As a developer, I can get the cats from the database and set the array in state.
+
+    ```ruby
+    componentDidMount(){
+    this.readCat()
+    }
+
+    readCat = () => {
+    fetch("http://localhost:3000/cats")
+    .then(response => response.json())
+    // set the state with the data from the backend into the empty array
+    .then(catsArray => this.setState({cats: catsArray}))
+    .catch(errors => console.log("Cat read errors:", errors))
+    }
+    ```
+- As a user, I can see all the cats.
+- As a user, I can see the information for just one cat.
+
+
+# Fetch Create Functionality
+
+- As a developer, I can update the createCat method to post information to the database.
+
+```ruby
+  createCat = (newCat) => {
+    fetch("http://localhost:3000/cats", {
+      body: JSON.stringify(newCat),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => response.json())
+    .then(() => this.readCat())
+  .catch(errors => console.log("Cat create errors:", errors))
+  }
+```
+
+- As a user, I can create a new cat.
+- As a user, I can see my new cat in the cat list.
+
+
+# Fetch Update Functionality
+
+- As a developer, I can update the updateCat method to update information in the database.
+- As a user, I can update an existing cat.
+- As a user, I can see the information for my updated cat.
+
+

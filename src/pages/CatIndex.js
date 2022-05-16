@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Card, CardTitle, Col } from 'reactstrap'
+import { Card, CardTitle, Col, Row } from 'reactstrap'
 
 class CatIndex extends Component {
     render() {
@@ -10,18 +10,21 @@ class CatIndex extends Component {
 
                 <br />
 
-                <Col sm="6">
-                    {this.props.cats && this.props.cats.map(cat => {
-                        return (
-                            <Card body key={`${cat.id}`}>
-                                <CardTitle>
-                                    <NavLink to={`/catshow/${cat.id}`} key={cat.id}><h4>{cat.name}</h4></NavLink>
-                                </CardTitle>
-                            </Card>
-                        )
-                    })}
-                </Col>
-                
+                {this.props.cats && this.props.cats.map(cat => {
+                    return (
+                        <Row key={cat.id}>
+                            <Col sm="6">
+                                <Card body>
+                                    <CardTitle>
+                                        <NavLink to={`/catshow/${cat.id}`}><h4>{cat.name}</h4></NavLink>
+                                    </CardTitle>
+                                </Card>
+                            </Col>
+                        </Row>
+                    )
+                })}
+
+
             </>
         );
     }
