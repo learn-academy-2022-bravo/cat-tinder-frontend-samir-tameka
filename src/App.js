@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import mockCats from './mockCats.js'
-
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -20,20 +18,52 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cats: mockCats
+      cats: []
     }
   }
 
-  createCat = (newCat) => {
-    console.log(newCat)
+  componentDidMount() {
+    this.readCat()
   }
 
-  editCat = (editCat, id) => {
-    console.log("cat:", editCat)
-    console.log("id:", id)
+  readCat = () => {
+    fetch("http://localhost:3000/cats")
+      .then(response => response.json())
+      .then(catsArray => this.setState({ cats: catsArray }))
+      .catch(errors => console.log("Cat read errors:", errors))
   }
+
+
+  createCat = (newCat) => {
+    fetch("http://localhost:3000/cats", {
+      body: JSON.stringify(newCat),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+      .then(response => response.json())
+      .then(() => this.readCat())
+      .catch(errors => console.log("Cat create errors:", errors))
+  }
+
+
+  deleteCat = (id) => {
+    fetch(`http://localhost:3000/cats/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then(response => response.json())
+      .then(() => this.readCat())
+      .catch(errors => console.log("delete errors:", errors))
+  }
+
 
   render() {
+    console.log(this.state.cats)
+
     return (
 
       <Router>
@@ -53,13 +83,13 @@ class App extends Component {
             render={(props) => {
               let id = +props.match.params.id
               let cat = this.state.cats.find(catObject => catObject.id === id)
-              return <CatShow cat={cat} />
+              return <CatShow cat={cat} deleteCat={this.deleteCat} />
             }}
           />
 
-           <Route 
-            path="/catnew" 
-            render={(props) => <CatNew createCat={this.createCat} />}
+          <Route
+            path="/catnew"
+            render={() => <CatNew createCat={this.createCat} />}
           />
 
           <Route
@@ -75,7 +105,7 @@ class App extends Component {
         </Switch>
 
         <Footer />
-            
+
       </Router>
 
     );

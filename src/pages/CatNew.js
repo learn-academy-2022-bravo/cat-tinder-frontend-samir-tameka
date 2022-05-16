@@ -9,7 +9,7 @@ class CatNew extends Component {
           newCat: {
             name: "",
             age: "",
-            enjoys: "",
+            hobbies: "",
             image: ""
           },
           submitted: false
@@ -18,7 +18,7 @@ class CatNew extends Component {
 
 
       handleChange = (e) => {
-        let { newCat } = this.state
+        const { newCat } = this.state
         newCat[e.target.name] = e.target.value
         this.setState({newCat: newCat})
       }
@@ -41,7 +41,6 @@ class CatNew extends Component {
                                type="text"
                                name="name"
                                onChange={this.handleChange}
-                               value={this.state.newCat.name}
                             />
                             <Label>Name</Label>
                         </FormGroup>
@@ -51,7 +50,6 @@ class CatNew extends Component {
                                 type="text"
                                 name="age"
                                 onChange={this.handleChange}
-                                value={this.state.newCat.age}
                             />
                             <Label>Age</Label>
                         </FormGroup>
@@ -59,9 +57,8 @@ class CatNew extends Component {
                         <FormGroup floating>
                             <Input
                                 type="text"
-                                name="enjoys"
+                                name="hobbies"
                                 onChange={this.handleChange}
-                                value={this.state.newCat.enjoys}
                             />
                             <Label>Favorite Hobbies</Label>
                         </FormGroup>
@@ -71,7 +68,6 @@ class CatNew extends Component {
                                 type="text"
                                 name="image"
                                 onChange={this.handleChange}
-                                value={this.state.newCat.image}
                             />
                             <Label>Link Your Prowlfile Pic</Label>
                         </FormGroup>
